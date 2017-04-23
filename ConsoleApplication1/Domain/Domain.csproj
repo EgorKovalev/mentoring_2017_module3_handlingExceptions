@@ -43,6 +43,10 @@
     <Compile Include="Abstract\IOrderRepository.cs" />
     <Compile Include="Concrete\OrderRepository.cs" />
     <Compile Include="Entities\Order.cs" />
+    <Compile Include="Exceptions\OrderStatusException.cs" />
+    <Compile Include="Exceptions\Logger.cs" />
+    <Compile Include="Exceptions\PriceValueException.cs" />
+    <Compile Include="Exceptions\UpdateDBException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

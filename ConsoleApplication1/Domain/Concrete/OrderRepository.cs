@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Abstract;
 using Domain.Entities;
+using Domain.Exceptions;
 
 namespace Domain.Concrete
 {
@@ -41,7 +41,7 @@ namespace Domain.Concrete
 				_dbContext[index] = order;
 				return order;
 			}
-			throw new Exception();
+            throw new UpdateDbException(order.ToString());
 		}
 
 		public bool Delete(int id)

@@ -2,6 +2,7 @@
 using Domain.Abstract;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Exceptions;
 using Services.Abstract;
 
 namespace Services.Concrete
@@ -24,11 +25,11 @@ namespace Services.Concrete
         {
             if (order.Price <= 0)
             {
-                throw new Exception();
+                throw new PriceValueException(order.ToString());
             }
             if (order.Status != Status.New)
             {
-                throw new Exception();
+                throw new OrderStatusException(order.ToString());
             }
             order.LastModification = DateTime.Now;
             return _repository.Add(order);
@@ -38,14 +39,18 @@ namespace Services.Concrete
         {
             if (order.Price <= 0)
             {
-                throw new Exception();
+                throw new PriceValueException(order.ToString());
             }
-            Status st = _repository.Get(order.Id).Status;
-            if (order.Status != st.Next() ||
-                order.Status != st.Prev() ||
-                order.Status != st)
+            Order o = _repository.Get(order.Id);
+            if (o != null)
             {
-                throw new Exception();
+                Status st = o.Status;
+                if (order.Status != st.Next() ||
+                    order.Status != st.Prev() ||
+                    order.Status != st)
+                {
+                    throw new OrderStatusException(order.ToString());
+                }
             }
             return _repository.Update(order);
         }
@@ -55,7 +60,7 @@ namespace Services.Concrete
             Order order = _repository.Get(id);
             if (order.Status == Status.Paid || order.Status == Status.InProgress)
             {
-                throw new Exception();
+                throw new OrderStatusException(order.ToString());
             }
             return _repository.Delete(id);
         }

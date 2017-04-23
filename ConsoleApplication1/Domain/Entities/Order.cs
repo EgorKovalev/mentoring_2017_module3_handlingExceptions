@@ -24,6 +24,12 @@ namespace Domain.Entities
 
 		[Required]
 		public double Price { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Id: {0}, Description: {1}, Status: {2}, Last modification: {3}, Price: {4}",
+                Id, Description, Status, LastModification, Price);
+        }
     }
 
 	public enum Status
@@ -38,7 +44,7 @@ namespace Domain.Entities
     {
         public static T Next<T>(this T src) where T : struct
         {
-            if (!typeof(T).IsEnum) throw new ArgumentException(String.Format("Argumnent {0} is not an Enum", typeof(T).FullName));
+            if (!typeof(T).IsEnum) throw new ArgumentException(string.Format("Argumnent {0} is not an Enum", typeof(T).FullName));
 
             T[] arr = (T[])Enum.GetValues(src.GetType());
             int j = Array.IndexOf<T>(arr, src) + 1;
@@ -47,7 +53,7 @@ namespace Domain.Entities
 
         public static T Prev<T>(this T src) where T : struct
         {
-            if (!typeof(T).IsEnum) throw new ArgumentException(String.Format("Argumnent {0} is not an Enum", typeof(T).FullName));
+            if (!typeof(T).IsEnum) throw new ArgumentException(string.Format("Argumnent {0} is not an Enum", typeof(T).FullName));
 
             T[] arr = (T[])Enum.GetValues(src.GetType());
             int j = Array.IndexOf<T>(arr, src);
