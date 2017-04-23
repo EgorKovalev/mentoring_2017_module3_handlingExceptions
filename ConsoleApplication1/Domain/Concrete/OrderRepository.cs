@@ -29,29 +29,24 @@ namespace Domain.Concrete
 		public Order Add(Order order)
 		{
 			order.Id = GetNextId();
-			
 			_dbContext.Add(order);
-			
 			return order;
 		}
 
 		public Order Update(Order order)
 		{
 			int index = _dbContext.FindIndex(item => item.Id == order.Id);
-
 			if(index != -1)
 			{
 				_dbContext[index] = order;
 				return order;
 			}
-
 			throw new Exception();
 		}
 
 		public bool Delete(int id)
 		{
 			Order order = _dbContext.FirstOrDefault(item => item.Id == id);
-
 			return (order != null) && _dbContext.Remove(order);
 		}
 

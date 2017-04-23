@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{9e66fe82-0d4c-4fa9-9b7d-1da68fc6b029}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{92b6180e-4385-4467-9897-473ec9f42bc5}</Project>
       <Name>Services</Name>
