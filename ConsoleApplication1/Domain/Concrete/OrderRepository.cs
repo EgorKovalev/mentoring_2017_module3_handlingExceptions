@@ -1,37 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Abstract;
+using Domain.Entities;
 
 namespace Domain.Concrete
 {
 	public class OrderRepository : IOrderRepository
 	{
-		private readonly List<Order> DBContext = new List<Order>();
+	    private readonly List<Order> _dbContext;
+	    private static OrderRepository _instance;
+
+	    private OrderRepository()
+	    {
+	        _dbContext = new List<Order>();
+	    }
+
+	    public static OrderRepository GetInstance()
+	    {
+	        return _instance ?? (_instance = new OrderRepository());
+	    }
 
 		public Order Get(int id)
 		{
-			return DBContext.FirstOrDefault(item => item.Id == id);
+			return _dbContext.FirstOrDefault(item => item.Id == id);
 		}
 
 		public Order Add(Order order)
 		{
 			order.Id = GetNextId();
 			
-			DBContext.Add(order);
+			_dbContext.Add(order);
 			
 			return order;
 		}
 
 		public Order Update(Order order)
 		{
-			int index = DBContext.FindIndex(item => item.Id == order.Id);
+			int index = _dbContext.FindIndex(item => item.Id == order.Id);
 
 			if(index != -1)
 			{
-				DBContext[index] = order;
+				_dbContext[index] = order;
 				return order;
 			}
 
@@ -40,14 +50,14 @@ namespace Domain.Concrete
 
 		public bool Delete(int id)
 		{
-			Order order = DBContext.FirstOrDefault(item => item.Id == id);
+			Order order = _dbContext.FirstOrDefault(item => item.Id == id);
 
-			return (order != null) ? DBContext.Remove(order) : false;
+			return (order != null) && _dbContext.Remove(order);
 		}
 
 		private int GetNextId()
 		{
-			return DBContext.Count + 1;
+			return _dbContext.Count + 1;
 		}
 	}
 }
