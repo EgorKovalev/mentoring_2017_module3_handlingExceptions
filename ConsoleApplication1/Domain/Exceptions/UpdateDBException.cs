@@ -2,16 +2,14 @@
 
 namespace Domain.Exceptions
 {
-    public class UpdateDbException : Exception
+    [Serializable]
+    public class UpdateDbException : DataLayerException
     {
-        private const string UpdateDbExceptionMessage = "An exception has been threw while updating database. For more details please see the log file";
-        private const string Path = "E:/Test/Text.txt";
-
+        private const string ExceptionMessage = 
+            "An exception has been threw while updating database. For more details please see the log file";
+        
         public UpdateDbException(string order)
-            : base(UpdateDbExceptionMessage)
-        {
-            var log = new Logger();
-            log.WriteExceptionToLog(Path, order);
-        }
+            : base(ExceptionMessage, order)
+        { }
     }
 }

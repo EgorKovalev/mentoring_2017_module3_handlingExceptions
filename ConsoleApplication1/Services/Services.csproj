@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Concrete\OrderService.cs" />
+    <Compile Include="Exceptions\BusinessLayerException.cs" />
+    <Compile Include="Exceptions\OrderStatusException.cs" />
+    <Compile Include="Exceptions\PriceValueException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +56,7 @@
       <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

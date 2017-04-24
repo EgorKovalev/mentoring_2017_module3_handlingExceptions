@@ -4,6 +4,7 @@ using Domain.Concrete;
 using Domain.Entities;
 using Domain.Exceptions;
 using Services.Abstract;
+using Services.Exceptions;
 
 namespace Services.Concrete
 {
@@ -52,7 +53,15 @@ namespace Services.Concrete
                     throw new OrderStatusException(order.ToString());
                 }
             }
-            return _repository.Update(order);
+
+            try
+            {
+                return _repository.Update(order);
+            }
+            catch (UpdateDbException)
+            {
+                return order; //return an object without update
+            }
         }
 
         public bool Delete(int id)
