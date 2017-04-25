@@ -60,6 +60,7 @@ namespace Services.Concrete
             }
             catch (UpdateDbException)
             {
+                Console.WriteLine("Can't update. For more information please see the log file");
                 return order; //return an object without update
             }
         }

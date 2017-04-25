@@ -45,6 +45,7 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Exceptions\DataLayerException.cs" />
     <Compile Include="Exceptions\Logger.cs" />
+    <Compile Include="Exceptions\OrderValidException.cs" />
     <Compile Include="Exceptions\UpdateDBException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

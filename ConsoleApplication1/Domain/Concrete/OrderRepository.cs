@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Domain.Abstract;
 using Domain.Entities;
@@ -28,13 +29,21 @@ namespace Domain.Concrete
 
 		public Order Add(Order order)
 		{
-			order.Id = GetNextId();
+		    if (!IsOrderValid(order))
+		    {
+		        throw new OrderValidException(order.ToString());
+		    }
+            order.Id = GetNextId();
 			_dbContext.Add(order);
 			return order;
 		}
 
 		public Order Update(Order order)
 		{
+            if (!IsOrderValid(order))
+		    {
+		        throw new OrderValidException(order.ToString());
+		    }
 			int index = _dbContext.FindIndex(item => item.Id == order.Id);
 			if(index != -1)
 			{
@@ -54,5 +63,10 @@ namespace Domain.Concrete
 		{
 			return _dbContext.Count + 1;
 		}
+
+	    private bool IsOrderValid(Order order)
+	    {
+            return Validator.TryValidateObject(order, new ValidationContext(order, null, null), null, true);
+	    }
 	}
 }

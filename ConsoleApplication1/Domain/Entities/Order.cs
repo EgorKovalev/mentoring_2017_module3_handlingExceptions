@@ -9,6 +9,7 @@ namespace Domain.Entities
 		public Order()
 		{
 			Status = Status.New;
+            LastModification = DateTime.Now;
 		}
 				
 		public int Id { get; set; }
