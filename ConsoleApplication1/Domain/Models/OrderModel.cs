@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Domain.Entities;
 
-namespace Domain.Entities
+namespace Domain.Models
 {
-    public class Order
+    public class OrderModel
     {
-		public Order()
+		public OrderModel()
 		{
 			Status = Status.New;
             LastModification = DateTime.Now;

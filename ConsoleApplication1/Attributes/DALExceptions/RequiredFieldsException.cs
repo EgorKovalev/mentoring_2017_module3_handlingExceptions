@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace Domain.Exceptions
+namespace Attributes.DALExceptions
 {
     [Serializable]
-    public class OrderValidException : DataLayerException
+    public class RequiredFieldsException : DLABaseException
     {
         private const string ExceptionMessage = 
             "All required fields must be initialized. For more details please see the log file";
 
-        public OrderValidException(string order)
+        public RequiredFieldsException(string order)
             : base(ExceptionMessage, order)
         { }
     }

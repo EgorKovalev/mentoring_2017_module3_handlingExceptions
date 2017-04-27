@@ -40,13 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IOrderRepository.cs" />
-    <Compile Include="Concrete\OrderRepository.cs" />
+    <Compile Include="Entities\EnumExtensions.cs" />
+    <Compile Include="Entities\Status.cs" />
+    <Compile Include="Interfaces\IOrderRepository.cs" />
+    <Compile Include="Implementations\OrderRepository.cs" />
     <Compile Include="Entities\Order.cs" />
-    <Compile Include="Exceptions\DataLayerException.cs" />
-    <Compile Include="Exceptions\Logger.cs" />
-    <Compile Include="Exceptions\OrderValidException.cs" />
-    <Compile Include="Exceptions\UpdateDBException.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +54,7 @@
       <Name>Attributes</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

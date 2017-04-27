@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Services.Exceptions
+namespace Attributes.BLExceptions
 {
     [Serializable]
-    public class OrderStatusException : BusinessLayerException
+    public class OrderStatusException : BLBaseException
     {
         private const string ExceptionMessage = 
             "Order status has not been set to correct value. For more details please see the log file";

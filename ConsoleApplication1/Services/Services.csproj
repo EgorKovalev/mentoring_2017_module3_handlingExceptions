@@ -39,11 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IOrderService.cs" />
-    <Compile Include="Concrete\OrderService.cs" />
-    <Compile Include="Exceptions\BusinessLayerException.cs" />
-    <Compile Include="Exceptions\OrderStatusException.cs" />
-    <Compile Include="Exceptions\PriceValueException.cs" />
+    <Compile Include="Interfaces\IOrderService.cs" />
+    <Compile Include="Implementations\OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,13 @@
 ﻿using Domain.Entities;
+using Domain.Models;
 
 namespace Domain.Abstract
 {
     public interface IOrderRepository
 	{
-		Order Get(int id);
-		Order Add(Order order);
-		Order Update(Order order);
+		OrderModel Get(int id);
+		OrderModel Add(OrderModel order);
+		OrderModel Update(OrderModel order);
 		bool Delete(int id);
 	}
 }

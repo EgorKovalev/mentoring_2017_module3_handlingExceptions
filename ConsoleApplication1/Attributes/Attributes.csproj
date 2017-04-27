@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RequiredAttribute.cs" />
+    <Compile Include="Attributes\RequiredAttribute.cs" />
+    <Compile Include="BLExceptions\BLBaseException.cs" />
+    <Compile Include="BLExceptions\OrderStatusException.cs" />
+    <Compile Include="BLExceptions\PriceValueException.cs" />
+    <Compile Include="DALExceptions\DLABaseException.cs" />
+    <Compile Include="DALExceptions\OrderExistException.cs" />
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="DALExceptions\RequiredFieldsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
