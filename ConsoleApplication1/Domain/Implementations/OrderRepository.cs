@@ -10,12 +10,12 @@ namespace Domain.Concrete
 {
 	public class OrderRepository : IOrderRepository
 	{
-	    private readonly List<OrderModel> _dbContext;
+	    private readonly List<Order> _dbContext;
 	    private static OrderRepository _instance;
 
 	    private OrderRepository()
 	    {
-	        _dbContext = new List<OrderModel>();
+	        _dbContext = new List<Order>();
 	    }
 
 	    public static OrderRepository GetInstance()
@@ -25,7 +25,8 @@ namespace Domain.Concrete
 
 		public OrderModel Get(int id)
 		{
-			return _dbContext.FirstOrDefault(item => item.Id == id);
+			Order order = _dbContext.FirstOrDefault(item => item.Id == id);
+			return new OrderModel(order);
 		}
 
 		public OrderModel Add(OrderModel order)
@@ -35,7 +36,7 @@ namespace Domain.Concrete
 			order.Id = GetNextId();
 			ValidateOrderId(order);
 			
-			_dbContext.Add(order);
+			_dbContext.Add(new Order(order));
 			return order;
 		}
 
@@ -46,7 +47,7 @@ namespace Domain.Concrete
 			int index = _dbContext.FindIndex(item => item.Id == order.Id);
 			if(index != -1)
 			{
-				_dbContext[index] = order;
+				_dbContext[index] = new Order(order);
 				return order;
 			}
             throw new KeyNotFoundException("Order is not present in the DB");
@@ -54,7 +55,7 @@ namespace Domain.Concrete
 
 		public bool Delete(int id)
 		{
-			OrderModel order = _dbContext.FirstOrDefault(item => item.Id == id);
+			Order order = _dbContext.FirstOrDefault(item => item.Id == id);
 			return (order != null) && _dbContext.Remove(order);
 		}
 

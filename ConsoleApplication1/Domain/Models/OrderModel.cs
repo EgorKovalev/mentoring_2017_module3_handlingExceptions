@@ -12,6 +12,15 @@ namespace Domain.Models
 			Status = Status.New;
             LastModification = DateTime.Now;
 		}
+
+		public OrderModel(Order order)
+		{
+			Id = order.Id;
+			Description = order.Description;
+			Status = order.Status;
+			LastModification = order.LastModification;
+			Price = order.Price;
+		}
 				
 		public int Id { get; set; }
 
