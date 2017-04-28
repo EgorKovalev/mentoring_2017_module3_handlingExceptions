@@ -37,7 +37,8 @@ namespace Runner
 				string path = new StringBuilder(basePath).Append(pathToDLALog).ToString();
 				string message = String.Format("{0} - data access layer exception has been threw in object {1}", errorMessage, additional);
 
-				new Logger().Write(path, message);
+				ILogger logger = new Logger();
+				logger.Write(path, message);
 			}
 			catch(BLBaseException blEx)
 			{
@@ -47,7 +48,8 @@ namespace Runner
 				string path = new StringBuilder(basePath).Append(pathToBLLog).ToString();
 				string message = String.Format("{0} - business layer exception has been threw in object {1}", errorMessage, additional);
 
-				new Logger().Write(path, message);
+				ILogger logger = new Logger();
+				logger.Write(path, message);
 			}
 			catch(SystemException ex)
 			{
@@ -55,8 +57,9 @@ namespace Runner
 
 				string path = new StringBuilder(basePath).Append(pathToSysLog).ToString();
 				string message = String.Format("{0} - system exception has been threw", errorMessage);
-
-				new Logger().Write(path, message);
+				
+				ILogger logger = new Logger();
+				logger.Write(path, message);
 			}
         }
     }

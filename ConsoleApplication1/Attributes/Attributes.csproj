@@ -46,6 +46,7 @@
     <Compile Include="BLExceptions\PriceValueException.cs" />
     <Compile Include="DALExceptions\DLABaseException.cs" />
     <Compile Include="DALExceptions\OrderExistException.cs" />
+    <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="DALExceptions\RequiredFieldsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
