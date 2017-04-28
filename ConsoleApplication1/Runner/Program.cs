@@ -12,9 +12,9 @@ namespace Runner
 {
     class Program
     {
-		private static string pathToDLALog = ConfigurationManager.AppSettings["dlalogfile"];
-		private static string pathToBLLog = ConfigurationManager.AppSettings["bllogfile"];
-		private static string pathToSysLog = ConfigurationManager.AppSettings["syslogfile"];
+		private static string pathToDLALog = ConfigurationManager.AppSettings["dalLogFile"];
+		private static string pathToBLLog = ConfigurationManager.AppSettings["blLogFile"];
+		private static string pathToSysLog = ConfigurationManager.AppSettings["sysLogFile"];
 
         static void Main()
         {
